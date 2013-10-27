@@ -39,8 +39,8 @@ namespace SkypeSpammerer_xE
         {
             asMainProc = isMainWindow;
 
-            rk = Registry.CurrentUser.CreateSubKey(@"Software\Lx24\Spammerer");
-            rkS = rk.CreateSubKey("Setting");
+            rk = Registry.CurrentUser.CreateSubKey(@"Software\Lasch24 Shitworks\SSpammer");
+            rkS = rk.CreateSubKey("Settings");
 
             if ((kk.Height == 0) && (kk.Width == 0))
             {
@@ -91,9 +91,9 @@ namespace SkypeSpammerer_xE
                     oldStatus = Skype1.CurrentUserStatus;
                     oldCity = Skype1.CurrentUserProfile.City;
                     oldMood = Skype1.CurrentUserProfile.MoodText;
-                    if (!Skype1.CurrentUserProfile.MoodText.StartsWith("Spamming", true, null)) Skype1.CurrentUserProfile.MoodText = "Spamming powered by Lasch24 Shitworks! - " + Skype1.CurrentUserProfile.MoodText;
+    /*                if (!Skype1.CurrentUserProfile.MoodText.StartsWith("Spamming", true, null)) Skype1.CurrentUserProfile.MoodText = "Spamming powered by Lasch24 Shitworks! - " + Skype1.CurrentUserProfile.MoodText;
                     Skype1.CurrentUserProfile.City = "Spammertown";
-                }
+      */          }
             }
             catch (System.Runtime.InteropServices.COMException ex)
             {
@@ -193,33 +193,10 @@ namespace SkypeSpammerer_xE
             rkS.SetValue("SizeY", this.Size.Height);
             rkS.Close();
             rk.Close();
-
-            if (asMainProc)
-            {
-                if ((Skype1.CurrentUserStatus == TUserStatus.cusDoNotDisturb) && (Skype1.CurrentUserStatus != oldStatus)) Skype1.ChangeUserStatus(oldStatus);
-                if (Environment.UserName.ToLower() != "laschilein")
-                {
-
-                    if ((Skype1.CurrentUserProfile.MoodText.Contains(oldMood)) && (Skype1.CurrentUserProfile.MoodText.StartsWith("Spamming")) && (Skype1.CurrentUserProfile.MoodText.Contains("Shitworks"))) Skype1.CurrentUserProfile.MoodText = oldMood;
-                    if (Skype1.CurrentUserProfile.City == "Spammertown") Skype1.CurrentUserProfile.City = oldCity;
-                }
-            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            /*
-            foreach (Chat chx in Skype1.Chats)
-            {
-                 // chx.ActivityTimestamp
-                string ee = "";
-                foreach(ChatMessage cm in chx.Messages)
-                {
-                    
-                    ee += cm.FromHandle + ": " + cm.Body + "\n";
-                }
-                MessageBox.Show(ee ,chx.DialogPartner); 
-            } */
-        }
+                   }
     }
 }
